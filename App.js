@@ -31,7 +31,7 @@ export default function App() {
       <Input changedHandler={changedDataHandler}/>
       {/* <Input changeHandler={props.changeHandler}/>???? */}
       {/* {inside this text show what user to typing} */}
-      <Text>{text}</Text>
+      <Text>{text}123</Text>
     </View>
   
   );
