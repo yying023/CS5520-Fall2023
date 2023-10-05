@@ -44,7 +44,31 @@ export default function App() {
   function goalDeleteHandler(deletedId) {
     console.log("I was deleted ", deletedId);
     //use array.filter to remove the item with deletedId
+    // keep the items where goal's id is not deleteID
+    // method 1
+    // const newArray = goals.filter((goal) => {
+    //   return goal.id !== deletedId 
+    //   })
+    //   setGoals(newArray);
+    // method 2
+    // setGoals(goals.filter((goal) => {
+    //   return goal.id !== deletedId 
+    //   })
+    // );
+    // method 3
+    setGoals((prevGoals) => {
+      return prevGoals.filter((goal) => {
+        return goal.id !== deletedId 
+      })
+    });
   }
+
+  function goalPressedHandler() {
+    console.log("I am pressed");
+  }
+
+
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -80,7 +104,7 @@ export default function App() {
           contentContainerStyle={styles.contentContainerStyle}
           data={goals}
           renderItem={({ item }) => {
-            return <GoalItem goal={item} deleteHandler={goalDeleteHandler} />;
+            return <GoalItem goal={item} deleteHandler={goalDeleteHandler} pressHandler={goalPressedHandler}/>;
 
             // return <Text style={styles.text}>{item.text}</Text>;
           }}
@@ -118,4 +142,4 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     marginBottom: 20,
   },
-});
+}); 
